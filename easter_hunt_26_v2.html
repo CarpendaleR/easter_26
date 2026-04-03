@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EASTER PROTOCOL: GLITCH EDITION</title>
+
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+<style>
+    body {
+        background: #120016;
+        color: #ff4fd8;
+        font-family: 'Courier New', monospace;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #b56bff;
+    }
+
+    #output {
+        white-space: pre-wrap;
+        border: 1px solid #ff4fd8;
+        padding: 15px;
+        min-height: 320px;
+        background: #1a0026;
+    }
+
+    input {
+        background: #120016;
+        border: 1px solid #b56bff;
+        color: #ff4fd8;
+        padding: 10px;
+        width: 80%;
+    }
+
+    button {
+        background: #ff4fd8;
+        color: #120016;
+        border: none;
+        padding: 10px 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #b56bff;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>> EASTER_PROTOCOL: GLITCH EDITION</h1>
+<div id="output">booting… something feels off 🐰
+It started as a normal Easter morning…
+eggs hidden, vibes good, no stress.
+
+Everything was fine.
+
+Until it wasn’t.
+
+The Easter Bunny didn’t just hide eggs this year —
+they hid the playlist.
+
+Taylor Swift? scrambled into clues.
+Linkin Park? distorted into warnings.
+Even the house… feels like it’s playing the wrong track.
+
+Something’s off.
+
+Chat… this is bad.
+
+The Golden Tracks — the ones that keep Easter “normal” — are missing.
+
+And the Bunny didn’t leave instructions.
+
+Just fragments. Lyrics. Memories. Hints hidden around Grandma’s house like nothing is wrong (but everything definitely is).
+
+To restore Easter, you must recover the Golden Tracks by solving lyric fragments left in different rooms and places.
+
+Each clue gets you closer.
+
+Each answer brings the system back into sync.
+
+But if you fail…
+
+Easter stays on shuffle forever.
+
+No order. No meaning. Just chaos.
+
+(Absolutely cooked.)
+
+</div>
+
+<div>
+    <input id="user-input" placeholder="enter code..." />
+    <button py-click="process_input">SUBMIT</button>
+</div>
+
+<script type="py">
+from pyscript import document
+
+level = 1
+
+def log(msg, clear=False):
+    out = document.querySelector("#output")
+    if clear:
+        out.innerText = msg + "\n"
+    else:
+        out.innerText += msg + "\n"
+
+def next_level():
+    global level
+    level += 1
+    log("------------------------------------------")
+    run_level()
+
+def process_input(event):
+    global level
+    val = document.querySelector("#user-input").value.strip().upper()
+    document.querySelector("#user-input").value = ""
+
+    # PHYSICAL CODES LIST (Hide these at the locations)
+    answers = {
+        1:"HYBRID_THEORY", 2:"ROOT_ACCESS", 3:"LOWER_GROUND",
+        4:"GET_COOKED", 5:"HOARDER_MODE", 6:"WASH_IT_OFF",
+        7:"CHLORINE_DREAM", 8:"OVERCLOCK", 9:"CONDUCTOR",
+        10:"1989_TV", 11:"67_PERCENT", 12:"TORTURED_POET",
+        13:"ENCHANTED", 14:"SLEEP_WALKING", 15:"FINAL_ASCENT"
+    }
+
+    if val == answers.get(level, ""):
+        log("✔ CUE_ACCEPTED: Sequence stabilized. Playlist syncing...")
+        next_level()
+    else:
+        log("✖ STAGE_FRIGHT: Technique is flawed. That answer is cooked.")
+
+def run_level():
+    global level
+
+    # INTERNAL_LOG: Upstairs Lounge (Main Hub)
+    if level == 1:
+        log("[LVL 1] TRACK: 'PAPER CUT'")
+        log("Media Studies: The 'Establishing Shot' of the upstairs interior.")
+        log("The primary set for 'The Chat'—where the cast gathers to break character.")
+        log("Look where the plot armor is thickest (and softest) near the screen.")
+
+    # INTERNAL_LOG: Outside (Apricot Tree / Compost / Garden)
+    elif level == 2:
+        log("[LVL 2] TRACK: 'OUT OF THE WOODS'")
+        log("Choreography: A site-specific installation in the 'Great Outdoors'.")
+        log("The narrative cycle of life—where the fruit falls and the performance")
+        log("returns to the earth. It’s giving organic decay and summer harvests.")
+
+    # INTERNAL_LOG: Downstairs Flat (Bedroom/Living)
+    elif level == 3:
+        log("[LVL 3] TRACK: 'NEW ROMANTICS'")
+        log("Legal Studies: You are entering a new jurisdiction.")
+        log("The basement-level subpoena. Gravity is your partner ($g = 9.81 m/s^2$)")
+        log("as you descend to the self-contained 'house within a house'.")
+
+    # INTERNAL_LOG: Upstairs Kitchen
+    elif level == 4:
+        log("[LVL 4] TRACK: 'SHAKE IT OFF'")
+        log("“I stay out too late... got nothing in my brain.”")
+        log("The 'Craft Services' table. High-key thermal energy.")
+        log("Don't get cooked while checking the stainless steel wings.")
+
+    # INTERNAL_LOG: 6-Car Garage (Garage Sale Items / Tools)
+    elif level == 5:
+        log("[LVL 5] TRACK: 'IN THE END'")
+        log("Drama: The prop warehouse. It’s giving maximalist 'Garage Sale' energy.")
+        log("Six silent actors waiting for their cue. The evidence is buried")
+        log("among the gardening steel and the relics of the past.")
+
+    # INTERNAL_LOG: Grandma's Ensuite (Upstairs)
+    elif level == 6:
+        log("[LVL 6] TRACK: 'CLEAN' (ENS_REMIX)")
+        log("Grandma's Private Box. The VIP wing of the upstairs stage.")
+        log("If you’re standing in the hallway, your blocking is off-script.")
+        log("A solo performance in porcelain, attached to the HQ.")
+
+    # INTERNAL_LOG: Pool Area / Pool Shed
+    elif level == 7:
+        log("[LVL 7] TRACK: 'LAVENDER HAZE'")
+        log("A literal water ballet. The blue-tiled stage is currently dark,")
+        log("but the technical override is hidden near the filtration.")
+        log("Beware the scent of chlorine and summer flashbacks.")
+
+    # INTERNAL_LOG: Computer Room (Upstairs)
+    elif level == 8:
+        log("[LVL 8] TRACK: 'SURFACE_TENSION'")
+        log("Media Studies: The Technical Booth. Where the 'Edit' happens.")
+        log("Solve for $x$ where $x$ is the glow of the monitor and the hum")
+        log("of the hardware. The code is hidden at the command center.")
+
+    # INTERNAL_LOG: Train Room (Downstairs)
+    elif level == 9:
+        log("[LVL 9] TRACK: 'BREAKING THE HABIT'")
+        log("A set piece with zero character growth. It loops. It repeats.")
+        log("A miniature industrial era performance downstairs.")
+        log("Conduct yourself to the room of iron 'Tracks'.")
+
+    # INTERNAL_LOG: Her/Mum's Childhood Room (Upstairs)
+    elif level == 10:
+        log("[LVL 10] TRACK: 'BACK TO DECEMBER'")
+        log("The Archive. A pas de deux between two generations of being 16.")
+        log("The closet where Mum’s 'Fearless' era meets your 'Folklore' era.")
+        log("Find the storage where the nostalgia is high-key haunting.")
+
+    # INTERNAL_LOG: The Small Toilet (Upstairs)
+    elif level == 11:
+        log("[LVL 11] GLITCH: ERROR_67")
+        log("The Solo Acoustic Set. A room for one. No shower, just thoughts.")
+        log("The smallest stage in the upstairs empire. Look to the 'High' shelf.")
+
+    # INTERNAL_LOG: Dining Room (Upstairs)
+    elif level == 12:
+        log("[LVL 12] TRACK: 'THE ALBATROSS'")
+        log("Legal Studies: The Room of the 12 Chairs. The Jury is in.")
+        log("The lighting is peak for a dramatic monologue over Sunday roast.")
+        log("The verdict is hidden at the head of the table.")
+
+    # INTERNAL_LOG: Main Bathroom (Upstairs)
+    elif level == 13:
+        log("[LVL 13] TRACK: 'ENCHANTED' (SKINCARE VER.)")
+        log("“I remember it all too well.” The steam, the mirror, the routine.")
+        log("The center stage for the morning ritual. Not an ensuite,")
+        log("but the main upstairs wash station.")
+
+    # INTERNAL_LOG: Grandma's Bedroom (Upstairs)
+    elif level == 14:
+        log("[LVL 14] TRACK: 'SLEEPWALKING'")
+        log("The Master HQ upstairs. The largest horizontal stage in the house.")
+        log("Keep the volume at zero; respect the pillows in the center of the bed.")
+
+    # INTERNAL_LOG: Outside Swing
+    elif level == 15:
+        log("[LVL 15] FINAL TRACK: 'LONG LIVE'")
+        log("Final Performance. High-key aerial hoop vibes.")
+        log("The pendulum of the lawn. Swing through the 'Reputation' era.")
+        log("This is where the 'Easter Protocol' reaches its climax.")
+
+run_level()
+</script>
+
+</body>
+</html>
