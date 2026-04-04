@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BROADWAY EASTER: OPENING NIGHT</title>
+
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+<style>
+    body {
+        background: #fdf5e6; /* Old Lace / Parchment vibe */
+        color: #2c3e50;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        color: #c0392b; /* Velvet Red */
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        border-bottom: 4px solid #f1c40f; /* Gold */
+        padding-bottom: 10px;
+        text-shadow: 2px 2px 0px #f1c40f;
+    }
+
+    #output {
+        white-space: pre-wrap;
+        border: 8px double #f1c40f; /* Gold Theatre Border */
+        padding: 30px;
+        width: 100%;
+        max-width: 700px;
+        min-height: 400px;
+        background: #ffffff;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        border-radius: 10px;
+    }
+
+    .input-container {
+        margin-top: 30px;
+        width: 100%;
+        max-width: 700px;
+        display: flex;
+        gap: 10px;
+    }
+
+    input {
+        flex-grow: 1;
+        background: #fff;
+        border: 2px solid #c0392b;
+        color: #2c3e50;
+        padding: 15px;
+        font-size: 1rem;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: #f1c40f;
+        box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+    }
+
+    button {
+        background: #c0392b;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+        background: #e74c3c;
+        transform: scale(1.05);
+    }
+
+    .curtain-text {
+        color: #c0392b;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>🎭 THE STAGE IS SET 🎭</h1>
+
+<div id="output">Welcome to the Premiere!
+
+The lights are dimming, the orchestra is tuning, and the Easter bunny has taken his seat in the front row.
+
+But there’s a problem... the script has been scrambled!
+
+To unlock the final act and find your reward, you must solve 10 musical theatre riddles.
+
+Ready? Places, everyone!
+------------------------------------------
+</div>
+
+<div class="input-container">
+    <input id="user-input" placeholder="Enter your answer..." />
+    <button py-click="process_input">SUBMIT</button>
+</div>
+
+<script type="py">
+from pyscript import document
+
+level = 1
+
+def log(msg, clear=False):
+    out = document.querySelector("#output")
+    if clear:
+        out.innerText = msg + "\n"
+    else:
+        out.innerText += msg + "\n"
+
+def next_level():
+    global level
+    level += 1
+    log("------------------------------------------")
+    run_level()
+
+def process_input(event):
+    global level
+    val = document.querySelector("#user-input").value.strip().upper()
+    document.querySelector("#user-input").value = ""
+
+    answers = {
+        1:"ELIZA", 2:"GRIZABELLA", 3:"JANE SEYMOUR", 4:"ANGEL OF MUSIC",
+        5:"SCHUYLER", 6:"ANNE BOLEYN", 7:"CHRISTINE", 8:"BURR",
+        9:"MEMORY", 10:"SIX"
+    }
+
+    if val == answers.get(level, ""):
+        log("✨ BRAVO! The audience cheers.")
+        next_level()
+    else:
+        log("❌ STAGE FRIGHT! You've missed your cue. Try again.")
+
+def run_level():
+    global level
+
+    if level == 1:
+        log("[ACT 1] THE LEGACY")
+        log("In the room where it happens, many are forgotten.")
+        log("But who is the one who 'stops the shuffling' and tells the story")
+        log("for the next fifty years? Who put herself back in the narrative?")
+
+    elif level == 2:
+        log("[ACT 2] THE JELLICLE CHOICE")
+        log("Andrew Lloyd Webber’s junkyard is full of spirits.")
+        log("She was once a glamour cat, now she's a tattered shadow.")
+        log("Who must touch the hand of the leader to ascend to the Heaviside Layer?")
+
+    elif level == 3:
+        log("[ACT 3] THE UNBREAKABLE")
+        log("From the 'Six' lineup: The one who 'stayed' when things got cold.")
+        log("The only one he ever truly loved. Who is the queen of the ballad?")
+
+    elif level == 4:
+        log("[ACT 4] THE MIRROR'S VOICE")
+        log("“In all your fantasies, you always knew...”")
+        log("What does the Phantom call himself when he is tutoring")
+        log("his obsession from behind the dressing room walls?")
+
+    elif level == 5:
+        log("[ACT 5] THE TRIO")
+        log("Work, work! Three sisters in the city looking for a mind at work.")
+        log("One is Helpless, one is Satisfied, and one is... Peggy.")
+        log("What is their shared surname?")
+
+    elif level == 6:
+        log("[ACT 6] THE GREEN SLEEVES")
+        log("“Sorry, not sorry 'bout the prequel.”")
+        log("Which Queen ended her 'Era' with a 'Don't Lose Your Head' warning?")
+
+    elif level == 7:
+        log("[ACT 7] THE DAÄE LEGACY")
+        log("Caught between a Raoul and a masked genius.")
+        log("The soprano who chooses the ring over the mask. Her first name?")
+
+    elif level == 8:
+        log("[ACT 8] THE DUEL")
+        log("The villain in the history books, the narrator on the stage.")
+        log("He was 'willing to wait for it' until he finally pulled the trigger.")
+        log("Who was the man who shot Alexander Hamilton?")
+
+    elif level == 9:
+        log("[ACT 9] THE 11 O'CLOCK NUMBER")
+        log("“Daylight... I must wait for the sunrise.”")
+        log("The most famous ballad in ALW history. A one-word song of a former life.")
+
+    elif level == 10:
+        log("[ACT 10] THE REWIND")
+        log("“We’re one of a kind, no category...”")
+        log("Divorced. Beheaded. Died. Divorced. Beheaded. Survived.")
+        log("The count of the wives is the title of the show. What is it?")
+
+    elif level == 11:
+        log("------------------------------------------")
+        log("✨ STANDING OVATION ✨")
+        log("The curtain falls. The script is restored.")
+        log("HAPPY EASTER!")
+        log(" ")
+        log("To receive your final reward...")
+        log("Find the Stage Manager and whisper the following code:")
+        log(">> [ 1 4 3 ] <<")
+
+run_level()
+</script>
+
+</body>
+</html>
